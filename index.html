@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alexander Hoff | Filmmaker Portfolio</title>
+    <style>
+        body {
+            font-family: "Courier New", Courier, monospace;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        nav {
+            margin-top: 1rem;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        .gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+        }
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .project-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .project-list li {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #222;
+            display: flex;
+            flex-direction: column;
+        }
+        .project-list img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #555;
+        }
+        textarea, input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Website Homepage.png" alt="Alexander Hoff Header Image" style="width: 100%; height: auto;">
+    </header>
+
+    <section id="about" class="container">
+        <h2>About Me</h2>
+        <p>Hello! My name is Alexander Hoff. I am 18 years old and based in Central Florida. I have been passionate about storytelling since I was a child. My goal is to tell compelling stories and assist others in bringing their narratives to life through my skills in leadership, management, and the technical aspects of various projects.</p>
+        <h3>YT Channels</h3>
+        <ul>
+            <li><a href="https://www.youtube.com/@Thehoffmakesmovies" target="_blank">Film Channel - The Hoff Makes Movies</a></li>
+            <li><a href="https://www.youtube.com/c/HauntFactory0525" target="_blank">Halloween Channel - Haunt Factory</a></li>
+        </ul>
+    </section>
+
+    <section id="portfolio" class="container">
+        <h2>My Portfolio</h2>
+        <p>You can view my full portfolio by clicking the link below:</p>
+        <a href="https://drive.google.com/file/d/1zBHROnecK5x8F3jy4Guux7HtLALmj14P/view?usp=sharing" target="_blank">Download/View Portfolio</a>
+    </section>
+
+    <section id="work" class="container">
+        <h2>Films</h2>
+        <div class="gallery">
+            <img src="Hey_Mister_poster_wo_accolades.webp" alt="Film 1" width="200" height="200" />
+            <img src="THE PROJECTING.png" alt="Film 2" width="200" height="200" />
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h2>Projects in Development</h2>
+        <ul class="project-list">
+            <li>
+                <strong>Malevolence In The West</strong> - A short western film about the horrors of superstition and the terrors of the dark. (Post Production)
+                <img src="Malevolence In The West Photos.png" alt="Malevolence In The West" width="300" height="300" />
+            </li>
+            <li>
+                <strong>Avoid Asking</strong> - A sci fi horror short that flips the traditional idea of an interrogation on its head. (Pre Production)
+            </li>
+        </ul>
+    </section>
+
+   <section id="contact" class="container">
+    <h2>Contact Me</h2>
+    <p>If you'd like to hire me to shoot, edit, or direct a project, please send an email my way and I'll get back to you as soon as I can!</p>
+    <form id="contact-form" action="https://formspree.io/f/xvgoqapn" method="POST">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name" required><br><br>
+        
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="message">Message:</label><br>
+        <textarea id="message" name="message" rows="5" required></textarea><br><br>
+        
+        <button type="submit">Send Message</button>
+    </form>
+    <div id="response-message"></div> 
+</section>
+
+<script>
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); 
+
+        const form = this;
+        const responseMessage = document.getElementById("response-message");
+
+        
+        fetch(form.action, {
+            method: form.method,
+            body: new FormData(form),
+            mode: "no-cors"
+        })
+        .then((response) => {
+          responseMessage.innerHTML = "<p style='color: green;'>Lights, camera, your message has been sent successfully!</p>";
+          form.reset();
+        })
+    });
+</script>
+</body>
+</html>
